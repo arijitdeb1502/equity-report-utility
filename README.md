@@ -182,12 +182,14 @@ To use a different port: `./mvnw spring-boot:run -Dspring-boot.run.arguments=--s
 |---|---|---|
 | GET | `/api/v1/customers` | All customers, ordered by customer code (PAN and demat numbers are masked) |
 | GET | `/api/v1/trades/by-volume` | All trades, highest volume (number of shares) first |
+| GET | `/api/v1/reports/top-traders?from=YYYY-MM-DD&to=YYYY-MM-DD&limit=10` | Customers with the most executed/settled trades between two dates (inclusive). Tied customers share a rank. `limit` is optional (1–100, default 10). |
 
 In Swagger UI, open an endpoint, click **Try it out**, then **Execute**. Or use curl:
 
 ```bash
 curl http://localhost:8080/api/v1/customers
 curl http://localhost:8080/api/v1/trades/by-volume
+curl "http://localhost:8080/api/v1/reports/top-traders?from=2026-07-01&to=2026-09-30&limit=10"
 ```
 
 ---
