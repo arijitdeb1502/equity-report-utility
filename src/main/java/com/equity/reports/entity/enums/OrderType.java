@@ -1,9 +1,12 @@
 package com.equity.reports.entity.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * Order type of a trade (trade.order_type).
  * The database value "SL-M" is not a valid Java identifier, so each constant
  * carries its database value and is mapped by {@link OrderTypeConverter}.
+ * The API also uses the database value (e.g. "SL-M"), via {@link JsonValue}.
  */
 public enum OrderType {
 	MARKET("MARKET"),
@@ -17,6 +20,7 @@ public enum OrderType {
 		this.dbValue = dbValue;
 	}
 
+	@JsonValue
 	public String getDbValue() {
 		return dbValue;
 	}
